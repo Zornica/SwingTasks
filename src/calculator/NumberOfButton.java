@@ -28,18 +28,18 @@ public class NumberOfButton {
     return false;
   }
 
-  public boolean isOperation(JButton button) {
-    if (button.getText().equals("+")) {
+  public boolean isOperation(String text) {
+    if (text.equals("+")) {
       operand = 1;
       return true;
     } else {
-      if (button.getText().equals("-")) {
+      if (text.equals("-")) {
         operand = 2;
         return true;
-      } else if (button.getText().equals("*")) {
+      } else if (text.equals("*")) {
         operand = 3;
         return true;
-      } else if(button.getText().equals("/")){
+      } else if(text.equals("/")){
         operand = 4;
         return true;
       }
@@ -58,7 +58,7 @@ public class NumberOfButton {
     thePanel.textResult.setText(thePanel.textResult.getText()+b  );
   }
 
-  public void onOperationPressed(String b) {
+  public void onOperationPressed() {
     number = Double.parseDouble(thePanel.textResult.getText());
     switch (operand) {
       case 1:

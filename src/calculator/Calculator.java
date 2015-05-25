@@ -30,10 +30,10 @@ public class Calculator extends JFrame implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
 
-    if(btn.isNumber((JButton)e.getSource())){
+    if(btn.isNumber((JButton) e.getSource())){
       btn.onNumberPressed(((JButton) e.getSource()).getText());
-    }else if(btn.isOperation((JButton)e.getSource())){
-      btn.onOperationPressed(((JButton) e.getSource()).getText());
+    }else if(btn.isOperation( ((JButton) e.getSource()).getText())){
+      btn.onOperationPressed();
     }else if(btn.isClear((JButton)e.getSource())){
       btn.onClear();
     }else{
