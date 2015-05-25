@@ -1,8 +1,9 @@
-package examples.tetris;
+package examples.exaples.tetris.tet;
 
 /**
  * Created by Zornitsa Petkova on 5/22/15.
  */
+
 import java.awt.BorderLayout;
 
         import javax.swing.JFrame;

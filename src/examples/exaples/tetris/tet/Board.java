@@ -1,4 +1,4 @@
-package examples.tetris;
+package examples.exaples.tetris.tet;
 
 /**
  * Created by Zornitsa Petkova on 5/22/15.
@@ -16,9 +16,9 @@ package examples.tetris;
   import javax.swing.JPanel;
   import javax.swing.Timer;
 
-  import examples.tetris.Shape.Tetrominoes;
+  import examples.exaples.tetris.tet.Shape.Tetrominoes;
 
-  public class Board extends JPanel
+public class Board extends JPanel
           implements ActionListener {
 
     private final int BoardWidth = 10;

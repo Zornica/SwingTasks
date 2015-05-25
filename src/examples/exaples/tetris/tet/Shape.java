@@ -1,4 +1,4 @@
-package examples.tetris;
+package examples.exaples.tetris.tet;
 
 /**
  * Created by Zornitsa Petkova on 5/22/15.
