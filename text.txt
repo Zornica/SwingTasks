@@ -1,1 +1,148 @@
-<!D
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+<title>Java Swing tutorial</title>
+<link rel="stylesheet" href="/cfg/format2.css" type="text/css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Java, Swing, GUI, toolkit, graphical user interface, tutorial, programming">
+<meta name="description" content="This is Java Swing tutorial. In this tutorial you will learn the 
+basics of programming in Java Swing.">
+<meta name="author" content="Jan Bodnar">
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5536206-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="container">
+
+<div id="wide_ad" class="ltow">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 160x600, August 2011 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-9706709751191532"
+     data-ad-slot="2484182563"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<div class="content">
+
+<header>
+
+<a href="/" title="Home">Home</a>
+
+</header>
+
+
+<h1>Java Swing tutorial</h1>
+
+<p>
+This is a Java Swing tutorial. The Java Swing tutorial is suited for beginners and 
+intermediate Swing developers. After reading this tutorial, you will be able to 
+develop non-trivial Java Swing applications. 
+</p>
+
+
+<h2>Table of contents</h2>
+
+<ul>
+  <li><a href="introduction/">Introduction</a></li>
+  <li><a href="firstprograms/">First programs</a></li>
+  <li><a href="menusandtoolbars/">Menus and toolbars</a></li>
+  <li><a href="swinglayoutmanagement/">Swing layout management</a></li>
+  <li><a href="swingevents/">Swing events</a></li>
+  <li><a href="basicswingcomponents/">Basic Swing components</a></li>
+  <li><a href="basicswingcomponentsII/">Basic Swing components II</a></li>
+  <li><a href="swingdialogs/">Swing dialogs</a></li>  
+  <li><a href="swingmodels/">Swing models</a></li>
+  <li><a href="draganddrop/">Drag and drop</a></li>
+  <li><a href="painting/">Painting</a></li>
+  <li><a href="resizablecomponent/">Resizable component</a></li>
+  <li><a href="puzzle/">Puzzle</a></li>
+  <li><a href="thetetrisgame/">Tetris</a></li>
+</ul>
+
+<h2>Swing</h2>
+
+<p>
+Swing is the principal GUI toolkit for the Java programming language. It is a part of the
+JFC (Java Foundation Classes), which is an API for providing a graphical user interface 
+for Java programs. It is completely written in Java.
+</p>
+
+<div class="social">
+
+<div class="fb-like" data-href="http://zetcode.com/tutorials/javaswingtutorial/" 
+    data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+
+<div class="g-plusone" data-size="medium"></div>
+
+<div class="twitter">
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</div>
+
+</div>
+
+
+<h2>E-books</h2>
+
+<p>
+The <a href="/ebooks/advancedjavaswing/">Advanced Java Swing</a> <em>e-book</em> covers advanced 
+Java Swing topics. It has 621 pages and 206 code examples.
+</p>
+
+<p>
+There is also an <em>e-book</em> for Swing layout management process: <a href="/ebooks/javaswinglayout/">Java Swing layout management tutorial</a>.
+</p>
+
+
+<h2>Related tutorials</h2>
+
+<p>
+There are several related tutorials on ZetCode. The 
+<a href="/gui/jythonswing/">Jython Swing tutorial</a> and the
+<a href="/gui/jrubyswing/">JRuby Swing tutorial</a> provide a tutorial
+for Swing for the Jython and JRuby languages. The 
+<a href="/gui/javaswt/">Java SWT tutorial</a> is an alternative for
+the Swing for Java programmers. The <a href="/gui/qtjambi/">QtJambi tutorial</a>
+brings Qt toolkit for the Java programmers. Finally the 
+<a href="/tutorials/javagamestutorial/">Java 2D games tutorial</a> and
+the <a href="/gfx/java2d/">Java 2D tutorial</a> further enhance your
+knowledge of the graphics programming in Java. <a href="/lang/java/">Java tutorial</a>
+teaches the basics of Java language.
+</p>
+
+<footer>
+
+<div class="signature">
+<a href="/">ZetCode::</a> last modified February 13, 2015 <spa

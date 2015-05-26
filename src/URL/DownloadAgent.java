@@ -2,13 +2,11 @@ package URL;
 
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.awt.*;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Random;
+
 
 /**
  * Created by Zornitsa Petkova on 5/25/15.
@@ -24,43 +22,51 @@ public class DownloadAgent {
   }
 
   public void downloadFile() throws Exception {
-    url = panel.urlText.getText();
-    outputFile = panel.fileText.getText();
-    URL url1 = new URL(url);
+    Runnable updatethread = new Runnable() {
+      public void run() {
+        try {
+          url = panel.urlText.getText();
+          outputFile = panel.fileText.getText();
+          URL url1 = new URL(url);
 
-    URLConnection file = url1.openConnection();
-    BufferedReader in = new BufferedReader(new InputStreamReader(file.getInputStream()));
-    int inputLine;
-    OutputStream out = new FileOutputStream(outputFile);
-    while ((inputLine = in.read()) != -1) {
-      System.out.println(inputLine);
-      out.write(inputLine);
-     doInBackground();
-    }
-    in.close();
-    out.close();
-  }
-  public void doInBackground() {
-    Random random = new Random();
-    int progress = 0;
-    // Initialize progress property.
-    panel.progressBar.setValue(0);
-    while (progress < 100) {
-      // Sleep for up to one second.
-      try {
-        Thread.sleep(random.nextInt(1000));
-      } catch (InterruptedException ignore) {
+          URLConnection file = url1.openConnection();
+          long completeFileSize = file.getContentLength();
+          BufferedInputStream in = new BufferedInputStream(file.getInputStream());
+          OutputStream out = new FileOutputStream(outputFile);
+          BufferedOutputStream bout = new BufferedOutputStream(out, 1024);
+          byte[] data = new byte[1024];
+          int downloadedFileSize = 0;
+          int x = 0;
+
+          while ((x = in.read(data, 0, 1024)) >= 0) {
+
+            downloadedFileSize += x;
+            bout.write(data, 0, x);
+            // calculate progress
+            float Percent = (downloadedFileSize * 100) / completeFileSize;
+            System.out.println(Percent);
+            panel.progressBar.setValue((int) Percent);
+          }
+          in.close();
+          out.close();
+        }
+         catch (IOException e) {
+           JOptionPane.showConfirmDialog((Component)
+                   null,e.getMessage(), "Error",
+                   JOptionPane.DEFAULT_OPTION);
+
+        }
       }
-      // Make random progress.
-      progress += random.nextInt(10);
-      panel.progressBar.setValue(Math.min(progress, 100));
-    }
+    };
+    new Thread(updatethread).start();
 
   }
 
   public void clear() {
     panel.urlText.setText("");
     panel.fileText.setText("");
+    panel.progressBar.setValue(0);
   }
+
 }
 
