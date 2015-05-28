@@ -1,8 +1,7 @@
 package URL;
 
 
-import javax.swing.*;
-import java.awt.*;
+
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -13,47 +12,41 @@ import java.net.URLConnection;
  */
 public class DownloadAgent {
 
-  String url;
-  String outputFile;
+
   PanelURL panel;
 
   public DownloadAgent(PanelURL panel) {
     this.panel = panel;
   }
 
-  public void downloadFile() throws Exception {
+  public void downloadFile(final String url,final String outputFile) throws Exception {
     Runnable updatethread = new Runnable() {
       public void run() {
         try {
-          url = panel.urlText.getText();
-          outputFile = panel.fileText.getText();
+
           URL url1 = new URL(url);
 
           URLConnection file = url1.openConnection();
-          long completeFileSize = file.getContentLength();
+         int completeFileSize = file.getContentLength();
+          System.out.println(completeFileSize);
           BufferedInputStream in = new BufferedInputStream(file.getInputStream());
           OutputStream out = new FileOutputStream(outputFile);
-          BufferedOutputStream bout = new BufferedOutputStream(out, 1024);
+          BufferedOutputStream bout = new BufferedOutputStream(out);
           byte[] data = new byte[1024];
           int downloadedFileSize = 0;
           int x = 0;
-
-          while ((x = in.read(data, 0, 1024)) >= 0) {
-
+          while ((x = in.read(data)) >= 0) {
             downloadedFileSize += x;
-            bout.write(data, 0, x);
-            // calculate progress
+            bout.write(data);
             float Percent = (downloadedFileSize * 100) / completeFileSize;
             System.out.println(Percent);
             panel.progressBar.setValue((int) Percent);
           }
           in.close();
           out.close();
-        }
-         catch (IOException e) {
-           JOptionPane.showConfirmDialog((Component)
-                   null,e.getMessage(), "Error",
-                   JOptionPane.DEFAULT_OPTION);
+        } catch (IOException e) {
+
+           e.getMessage();
 
         }
       }

@@ -29,7 +29,7 @@ public class Downloader extends JFrame implements ActionListener{
    public void actionPerformed(ActionEvent e){
      if(((JButton)e.getSource()).getText().equals("Download")){
        try{
-       downloadAgent.downloadFile();
+       downloadAgent.downloadFile(panel.urlText.getText(),panel.fileText.getText());
 
        }catch (Exception ex){
          System.out.println(ex.getMessage());
