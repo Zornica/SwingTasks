@@ -15,14 +15,15 @@ import java.net.Socket;
  */
 public class Client extends JFrame implements ActionListener {
   PanelClient panel;
+  ClientStart client;
 
-  public Client() {
+  public Client() throws IOException {
     setSize(300, 300);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setTitle("Client");
     panel = new PanelClient();
-
+    client = new ClientStart();
     add(panel);
     setVisible(true);
 
@@ -31,18 +32,24 @@ public class Client extends JFrame implements ActionListener {
   }
 
   public void actionPerformed(ActionEvent e) {
+
     try {
-      Socket connection = new Socket("localhost", 1099);
+      client.start();
+      /*Socket connection = new Socket("localhost", 1099);*/
       panel.text.append("The client connects with server!\n\n");
-      BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-      panel.text.append("The client reads from server: \n"+in.readLine());
-      in.close();
+      /*BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));*/
+      /*s = in.readLine();*/
+      panel.text.append("The client reads from server: \n" + client.s);
+      /*in.close();
       connection.close();
+ */
       panel.text.append("\n\nThe connection with server is closed!\n");
     } catch (IOException ex) {
-      panel.text.append(ex.getMessage());
+      panel.text.append(ex.getMessage() + "\n");
     }
+
   }
+
 
   public static void main(String[] args) throws IOException {
     Client client = new Client();

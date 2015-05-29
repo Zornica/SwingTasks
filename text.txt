@@ -236,7 +236,26 @@ implements <a href="../../java/util/Map.html" title="interface in java.util">Map
 </a>
 <h3>Constructor Summary</h3>
 <table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
-<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Constructors<Code()"><code>Object.hashCode()</code></a>, 
+<a href="../../java/util/Hashtable.html#rehash()"><code>rehash()</code></a>, 
+<a href="../../java/util/Collection.html" title="interface in java.util"><code>Collection</code></a>, 
+<a href="../../java/util/Map.html" title="interface in java.util"><code>Map</code></a>, 
+<a href="../../java/util/HashMap.html" title="class in java.util"><code>HashMap</code></a>, 
+<a href="../../java/util/TreeMap.html" title="class in java.util"><code>TreeMap</code></a>, 
+<a href="../../serialized-form.html#java.util.Hashtable">Serialized Form</a></dd></dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing construc/span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
@@ -268,7 +287,8 @@ implements <a href="../../java/util/Map.html" title="interface in java.util">Map
 <tr class="altColor">
 <td class="colOne"><code><strong><a href="../../java/util/Hashtable.html#Hashtable(int,%20float)">Hashtable</a></strong>(int&nbsp;initialCapacity,
          float&nbsp;loadFactor)</code>
-<div class="block">Constructs a new, empty hashtable wiable">V</a>&gt;&nbsp;t)</code>
+<div class="block">Constructs a new, empty hashtable with the specified initial
+ capacity and the specified loable">V</a>&gt;&nbsp;t)</code>
 <div class="block">Constructs a new hashtable with the same mappings as the given
  Map.</div>
 </td>
@@ -324,11 +344,7 @@ implements <a href="../../java/util/Map.html" title="interface in java.util">Map
 <div class="block">Returns an enumeration of the values in this hashtable.</div>
 </td>
 </tr>
-<tr class="ct.html" title="class in java.lang">Object</a>&nbsp;key)</code>
-<div class="block">Tests if the specified object is a key in this hashtable.</div>
-</td>
-</tr>
-<tr class="altColaltColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../java/util/Set.html" title="interface in java.util">Set</a>&lt;<a href="../../java/util/Map.Entry.html" title="interface in java.util">Map.Entry</a>&lt;<a href="../../java/util/Hashtable.html" title="type parameter in Hashtable">K</a>,<a href="../../java/util/Hashtable.html" title="type parameter in Hashtable">V</a>&gt;&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../java/util/Hashtable.html#entrySet()">entrySet</a></strong>()</code>
 <div class="block">Returns a <a href="../../java/util/Set.html" title="interface in java.util"><code>Set</code></a> view of the mappings contained in this map.</div>
@@ -706,14 +722,7 @@ implements <a href="../../java/util/Map.html" title="interface in java.util">Map
 <dt><span class="strong">Returns:</span></dt><dd>the previous value of the specified key in this hashtable,
              or <code>null</code> if it did not have one</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code><a href="../../java/lang/NullPointerExterface in java.util">Map</a>&lt;<a href="../../java/util/Hashtable.html" title="type parameter in Hashtable">K</a>,<a href="../../java/util/Hashtable.html" title="type parameter in Hashtable">V</a>&gt;</code></dd>
-<dt><strong>Specified by:</strong></dt>
-<dd><code><a href="../../java/util/Dictionary.html#put(K,%20V)">put</a></code>&nbsp;in class&nbsp;<code><a href="../../java/util/Dictionary.html" title="class in java.util">Dictionary</a>&lt;<a href="../../java/util/Hashtable.html" title="type parameter in Hashtable">K</a>,<a href="../../java/util/Hashtable.html" title="type parameter in Hashtable">V</a>&gt;</code></dd>
-<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - the hashtable key</dd><dd><code>value</code> - the value</dd>
-<dt><span class="strong">Returns:</span></dt><dd>the previous value of the specified key in this hashtable,
-             or <code>null</code> if it did not have one</dd>
-<dt><span class="strong">Throws:</span></dt>
-<dd><codception.html" title="class in java.lang">NullPointerException</a></code> - if the key or value is
+<dd><code><a href="../../java/lang/NullPointerException.html" title="class in java.lang">NullPointerException</a></code> - if the key or value is
                <code>null</code></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../java/lang/Object.html#equals(java.lang.Object)"><code>Object.equals(Object)</code></a>, 
 <a href="../../java/util/Hashtable.html#get(java.lang.Object)"><code>get(Object)</code></a></dd></dl>
 </li>
@@ -750,9 +759,7 @@ implements <a href="../../java/util/Map.html" title="interface in java.util">Map
  These mappings will replace any mappings that this hashtable had for any
  of the keys currently in the specified map.</div>
 <dl>
-<dt><strong>Spen></dt><dd>the value to which the key had been mapped in this hashtable,
-          or <code>null</code> if the key did not have a mapping</dd>
-<dt><span class="strong">Throws:<cified by:</strong></dt>
+<dt><strong>Specified by:</strong></dt>
 <dd><code><a href="../../java/util/Map.html#putAll(java.util.Map)">putAll</a></code>&nbsp;in interface&nbsp;<code><a href="../../java/util/Map.html" title="interface in java.util">Map</a>&lt;<a href="../../java/util/Hashtable.html" title="type parameter in Hashtable">K</a>,<a href="../../java/util/Hashtable.html" title="type parameter in Hashtable">V</a>&gt;</code></dd>
 <dt><span class="strong">Parameters:</span></dt><dd><code>t</code> - mappings to be stored in this map</dd>
 <dt><span class="strong">Throws:</span></dt>
@@ -776,22 +783,7 @@ implements <a href="../../java/util/Map.html" title="interface in java.util">Map
 </ul>
 <a name="clone()">
 <!--   -->
-<arameters:</span></dt><dd><code>t</code> - mappings to be stored in this map</dd>
-<dt><span class="strong">Throws:</span></dt>
-<dd><code><a href="../../java/lang/NullPointerException.html" title="class in java.lang">NullPointerException</a></code> - if the specified map is null</dd><dt><span class="strong">Since:</span></dt>
-  <dd>1.2</dd></dl>
-</li>
-</ul>
-<a name="clear()">
-<!--   -->
 </a>
-<ul class="blockList">
-<li class="blockList">
-<h4>clear</h4>
-<pre>public&nbsp;void&nbsp;clear()</pre>
-<div class="block">Clears this hashtable so that it contains no keys.</div>
-<dl>
-<dt><strong>Specified b/a>
 <ul class="blockList">
 <li class="blockList">
 <h4>clone</h4>
@@ -957,4 +949,22 @@ implements <a href="../../java/util/Map.html" title="interface in java.util">Map
 <li><a href="package-summary.html">Package</a></li>
 <li class="navBarCell1Rev">Class</li>
 <li><a href="class-use/Hashtable.html">Use</a></li>
-<li><a href="p
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../index-files/index-1.html">Index</a></li>
+<li><a href="../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em><strong>Java&trade;&nbsp;Platform<br>Standard&nbsp;Ed.&nbsp;7</strong></em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../java/util/HashSet.html" title="class in java.util"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../java/util/IdentityHashMap.html" title="class in java.util"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../index.html?java/util/Hashtable.html" target="_top">Frames</a></li>
+<li><a href="Hashtable.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../allclasses-noframe.html">All Classes</a></li>
+</

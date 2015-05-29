@@ -1,7 +1,6 @@
 package URL;
 
 
-
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -19,7 +18,7 @@ public class DownloadAgent {
     this.panel = panel;
   }
 
-  public void downloadFile(final String url,final String outputFile) throws Exception {
+  public void downloadFile(final String url, final String outputFile) throws Exception {
     Runnable updatethread = new Runnable() {
       public void run() {
         try {
@@ -27,7 +26,7 @@ public class DownloadAgent {
           URL url1 = new URL(url);
 
           URLConnection file = url1.openConnection();
-         int completeFileSize = file.getContentLength();
+          int completeFileSize = file.getContentLength();
           System.out.println(completeFileSize);
           BufferedInputStream in = new BufferedInputStream(file.getInputStream());
           OutputStream out = new FileOutputStream(outputFile);
@@ -46,7 +45,7 @@ public class DownloadAgent {
           out.close();
         } catch (IOException e) {
 
-           e.getMessage();
+          e.getMessage();
 
         }
       }

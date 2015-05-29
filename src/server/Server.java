@@ -1,7 +1,6 @@
 package server;
 
 
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +15,8 @@ import java.util.Date;
  */
 public class Server extends JFrame implements ActionListener {
   PanelServer panel;
-  Socket connection;
+  ServerStart server;
+
 
   public Server() throws IOException {
     setSize(200, 200);
@@ -24,26 +24,25 @@ public class Server extends JFrame implements ActionListener {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setTitle("Server");
     panel = new PanelServer();
+    server = new ServerStart();
 
     add(panel);
     setVisible(true);
 
-    ServerSocket server = new ServerSocket(1099);
-    connection = server.accept();
-    OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());
-    out.flush();
-    out.write("Hello!" + new Date());
-    out.close();
-    connection.close();
+    server.start();
 
     panel.button.addActionListener(this);
   }
 
   public void actionPerformed(ActionEvent e) {
+try{
+server.connection.close();
+    System.exit(0);
+}catch (IOException ex){
 
-      System.exit(0);
+}
 
- }
+  }
 
   public static void main(String[] args) throws IOException {
     Server server = new Server();

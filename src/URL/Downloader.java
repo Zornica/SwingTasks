@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 /**
  * Created by Zornitsa Petkova on 5/25/15.
  */
-public class Downloader extends JFrame implements ActionListener{
+public class Downloader extends JFrame implements ActionListener {
   PanelURL panel;
-  DownloadAgent downloadAgent ;
+  DownloadAgent downloadAgent;
 
 
   public Downloader() {
@@ -23,20 +23,21 @@ public class Downloader extends JFrame implements ActionListener{
 
     this.getContentPane().add(panel);
     setVisible(true);
-   panel.download.addActionListener(this);
+    panel.download.addActionListener(this);
     panel.clear.addActionListener(this);
   }
-   public void actionPerformed(ActionEvent e){
-     if(((JButton)e.getSource()).getText().equals("Download")){
-       try{
-       downloadAgent.downloadFile(panel.urlText.getText(),panel.fileText.getText());
 
-       }catch (Exception ex){
-         System.out.println(ex.getMessage());
-       }
-     }else{
-       downloadAgent.clear();
-     }
-   }
+  public void actionPerformed(ActionEvent e) {
+    if (((JButton) e.getSource()).getText().equals("Download")) {
+      try {
+        downloadAgent.downloadFile(panel.urlText.getText(), panel.fileText.getText());
+
+      } catch (Exception ex) {
+        System.out.println(ex.getMessage());
+      }
+    } else {
+      downloadAgent.clear();
+    }
+  }
 
 }
