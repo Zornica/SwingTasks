@@ -34,19 +34,16 @@ public class Server extends JFrame implements ActionListener {
     out.flush();
     out.write("Hello!" + new Date());
     out.close();
-
+    connection.close();
 
     panel.button.addActionListener(this);
   }
 
   public void actionPerformed(ActionEvent e) {
-    try {
+
       System.exit(0);
-      connection.close();
-    } catch (IOException ex) {
-      System.out.println(ex.getMessage());
-    }
-  }
+
+ }
 
   public static void main(String[] args) throws IOException {
     Server server = new Server();

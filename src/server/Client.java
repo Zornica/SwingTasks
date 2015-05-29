@@ -13,10 +13,11 @@ import java.net.Socket;
 /**
  * Created by Zornitsa Petkova on 5/28/15.
  */
-public class Client extends JFrame implements ActionListener{
+public class Client extends JFrame implements ActionListener {
   PanelClient panel;
-  public Client(){
-    setSize(200, 200);
+
+  public Client() {
+    setSize(300, 300);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setTitle("Client");
@@ -25,24 +26,25 @@ public class Client extends JFrame implements ActionListener{
     add(panel);
     setVisible(true);
 
- panel.text.addActionListener(this);
+    panel.button.addActionListener(this);
 
   }
-  public void actionPerformed(ActionEvent e){
-    try{
-      Socket connection = new Socket("localhost",1099);
-      panel.text.setText("The client connects with server!\n");
+
+  public void actionPerformed(ActionEvent e) {
+    try {
+      Socket connection = new Socket("localhost", 1099);
+      panel.text.append("The client connects with server!\n\n");
       BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-      panel.text.setText(panel.text.getText()+"The client reads from server:\n");
-      System.out.println(in.readLine());
+      panel.text.append("The client reads from server: \n"+in.readLine());
       in.close();
       connection.close();
-      panel.text.setText(panel.text.getText()+"The connection with server is closed!\n");
-    }catch (IOException ex){
-      System.out.println(ex.getMessage());
+      panel.text.append("\n\nThe connection with server is closed!\n");
+    } catch (IOException ex) {
+      panel.text.append(ex.getMessage());
     }
   }
-  public static void main(String[] args) throws IOException{
-Client client = new Client();
+
+  public static void main(String[] args) throws IOException {
+    Client client = new Client();
   }
 }
