@@ -14,7 +14,7 @@ import java.util.List;
 public class ClientThread extends Thread {
   private Socket socket;
   private int br;
-  private String s;
+  public String s;
 
   public ClientThread(Socket socket,int br){
     this.socket = socket;
@@ -23,7 +23,6 @@ public class ClientThread extends Thread {
 
   public void run(){
     try{
-   /*   socket = new Socket("localhost", 1099);*/
       PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
       out.flush();
       s="YOU ARE CLIENT " + br + " ! ";

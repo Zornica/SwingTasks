@@ -2,8 +2,6 @@ package multyserver;
 
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -15,7 +13,6 @@ import java.util.List;
 public class Server {
   private int br = 0;
   private List<Socket> list;
-  private PrintWriter output;
   private Socket client;
   private ClientThread thread;
 
@@ -26,19 +23,17 @@ public class Server {
     while (true) {
       client = serverSocket.accept();
       br++;
-     /* output = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
-      output.flush();*/
-     /* output.write("YOU ARE CLIENT " + (list.indexOf(client) + 1) + " ! ");*/
-     thread =  new ClientThread(client, br);
+      thread = new ClientThread(client, br);
       thread.start();
       list.add(client);
       System.out.println("Thread started!");
-      if(thread.isInterrupted()){return;}
+      if (thread.isInterrupted()) {
+        return;
+      }
     }
   }
 
   public void close() throws IOException {
-   /* output.close();*/
     client.close();
     thread.interrupt();
 
