@@ -13,12 +13,12 @@ import static org.junit.Assert.assertThat;
  */
 public class ClientTest {
   @Test
-  public void isConnect()throws IOException{
+  public void isConnect() throws IOException {
     Server server = new Server();
 
     Client client = new Client();
 
-    assertThat(client.panel.text.getText(), is("The client connects with server!\n\n"+"The client reads from server: \n"+"Hallo " + new Date()+"\n\nThe connection with server is closed!\n"));
+    assertThat(client.panel.text.getText(), is("The client connects with server!\n\n" + "The client reads from server: \n" + "Hallo " + new Date() + "\n\nThe connection with server is closed!\n"));
   }
 
 

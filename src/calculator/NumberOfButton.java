@@ -7,7 +7,7 @@ import javax.swing.*;
  * Created by Zornitsa Petkova on 5/19/15.
  */
 public class NumberOfButton {
-  Panel thePanel ;
+  Panel thePanel;
   public int function;
   public int operand;
   public Double number;
@@ -15,7 +15,7 @@ public class NumberOfButton {
   public Double result;
 
   public NumberOfButton(Panel thePanel) {
-    this.thePanel=thePanel;
+    this.thePanel = thePanel;
   }
 
   public boolean isNumber(JButton button) {
@@ -39,7 +39,7 @@ public class NumberOfButton {
       } else if (text.equals("*")) {
         operand = 3;
         return true;
-      } else if(text.equals("/")){
+      } else if (text.equals("/")) {
         operand = 4;
         return true;
       }
@@ -55,7 +55,7 @@ public class NumberOfButton {
   }
 
   public void onNumberPressed(String b) {
-    thePanel.textResult.setText(thePanel.textResult.getText()+b  );
+    thePanel.textResult.setText(thePanel.textResult.getText() + b);
   }
 
   public void onOperationPressed() {

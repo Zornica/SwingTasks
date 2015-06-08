@@ -19,7 +19,7 @@ public class DownloadAgent {
   }
 
   public void downloadFile(final String url, final String outputFile) throws Exception {
-    Runnable updatethread = new Runnable() {
+    Runnable updateThread = new Runnable() {
       public void run() {
         try {
 
@@ -50,7 +50,7 @@ public class DownloadAgent {
         }
       }
     };
-    new Thread(updatethread).start();
+    new Thread(updateThread).start();
 
   }
 

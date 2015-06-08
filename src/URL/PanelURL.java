@@ -15,7 +15,7 @@ public class PanelURL extends JPanel {
   JButton clear;
   JProgressBar progressBar;
 
-  public  PanelURL() {
+  public PanelURL() {
 
     this.setLayout(new GridBagLayout());
     GridBagConstraints gridBagConstraints = new GridBagConstraints();

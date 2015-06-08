@@ -1,14 +1,12 @@
 package server;
 
-import sun.management.resources.agent;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.Socket;
+
 
 /**
  * Created by Zornitsa Petkova on 5/28/15.
@@ -35,14 +33,12 @@ public class Client extends JFrame implements ActionListener {
 
     try {
       client.start();
-      /*Socket connection = new Socket("localhost", 1099);*/
+
       panel.text.append("The client connects with server!\n\n");
-      /*BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));*/
-      /*s = in.readLine();*/
+
       panel.text.append("The client reads from server: \n" + client.s);
-      /*in.close();
-      connection.close();
- */
+
+
       panel.text.append("\n\nThe connection with server is closed!\n");
     } catch (IOException ex) {
       panel.text.append(ex.getMessage() + "\n");

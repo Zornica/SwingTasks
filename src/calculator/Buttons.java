@@ -3,7 +3,6 @@ package calculator;
 import javax.swing.*;
 
 
-
 /**
  * Created by Zornitsa Petkova on 5/20/15.
  */

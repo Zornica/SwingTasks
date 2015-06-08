@@ -4,8 +4,6 @@ package calculator;
 import org.junit.Test;
 
 
-
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -15,8 +13,9 @@ import static org.junit.Assert.assertThat;
 public class CalculatorTest {
   Calculator calc = new Calculator();
   NumberOfButton btn = new NumberOfButton(calc.thePanel);
+
   @Test
-  public void calculatePLus(){
+  public void calculatePLus() {
     btn.onNumberPressed("4");
     btn.isOperation("+");
     btn.onOperationPressed();
@@ -26,7 +25,7 @@ public class CalculatorTest {
   }
 
   @Test
-  public void calculateMinus(){
+  public void calculateMinus() {
     btn.onNumberPressed("14");
     btn.isOperation("-");
     btn.onOperationPressed();
@@ -36,7 +35,7 @@ public class CalculatorTest {
   }
 
   @Test
-  public void calculateMultiply(){
+  public void calculateMultiply() {
     btn.onNumberPressed("4");
     btn.isOperation("*");
     btn.onOperationPressed();
@@ -46,7 +45,7 @@ public class CalculatorTest {
   }
 
   @Test
-  public void calculatePartition(){
+  public void calculatePartition() {
     btn.onNumberPressed("20");
     btn.isOperation("/");
     btn.onOperationPressed();

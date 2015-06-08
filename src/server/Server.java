@@ -5,10 +5,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.Date;
+
 
 /**
  * Created by Zornitsa Petkova on 5/28/15.

@@ -19,7 +19,6 @@ public class ServerStart {
     out.flush();
     out.write("Hello!" + new Date());
     out.close();
-    connection.close();
   }
 
   public static void main(String[] args)throws IOException{
