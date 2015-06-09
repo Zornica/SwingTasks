@@ -12,14 +12,13 @@ import java.util.List;
  */
 public class Server {
   private int br = 0;
-  private List<Socket> list;
   private Socket client;
   private ClientThread thread;
 
   public void start() throws IOException {
     ServerSocket serverSocket = new ServerSocket(1099);
     System.out.println("Server started");
-    list = new ArrayList<Socket>();
+   List <Socket> list = new ArrayList<Socket>();
     while (true) {
       client = serverSocket.accept();
       br++;

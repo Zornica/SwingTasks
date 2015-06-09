@@ -11,26 +11,32 @@ import java.net.Socket;
 public class Client {
   private String s;
   private BufferedReader in;
+  private PanelClient panel;
+
+  public Client(PanelClient panel){
+    this.panel = panel;
+  }
 
   public void start() throws IOException {
     Socket connection = new Socket("localhost", 1099);
     in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
     while (true){
       s = in.readLine();
-      System.out.println(s);
+
       if(s == null){
-        break;
+        return;
+      }
+      else{
+        System.out.println(s);
+        panel.text.append(s + "\n");
       }
     }
 
-  }
 
-  public void stop() throws IOException {
-    in.close();
   }
 
   public static void main(String[] args) throws IOException {
-    Client client = new Client();
+    Client client = new Client(new PanelClient());
     client.start();
 
   }
