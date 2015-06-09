@@ -53,4 +53,14 @@ public class CalculatorTest {
     btn.onEqualPressed();
     assertThat(calc.thePanel.textResult.getText(), is("4.0"));
   }
+
+  @Test
+  public void calculateExceptionPoint() {
+    btn.onNumberPressed("2");
+    btn.onNumberPressed(".");
+    btn.onNumberPressed(".");
+    btn.isOperation("/");
+    btn.onOperationPressed();
+    assertThat(calc.thePanel.textResult.getText(), is("Error: multiple points"));
+  }
 }

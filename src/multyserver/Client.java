@@ -10,13 +10,23 @@ import java.net.Socket;
  */
 public class Client {
   private String s;
+  private BufferedReader in;
 
   public void start() throws IOException {
     Socket connection = new Socket("localhost", 1099);
-    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-    s = in.readLine();
+    in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    while (true){
+      s = in.readLine();
+      System.out.println(s);
+      if(s == null){
+        break;
+      }
+    }
+
+  }
+
+  public void stop() throws IOException {
     in.close();
-    System.out.println(s);
   }
 
   public static void main(String[] args) throws IOException {

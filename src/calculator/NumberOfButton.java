@@ -59,6 +59,7 @@ public class NumberOfButton {
   }
 
   public void onOperationPressed() {
+    try{
     number = Double.parseDouble(thePanel.textResult.getText());
     switch (operand) {
       case 1:
@@ -76,7 +77,10 @@ public class NumberOfButton {
       default:
         break;
     }
-    onClear();
+      onClear();
+    }catch(Exception ex){
+      thePanel.textResult.setText("Error: "+ex.getMessage());
+    }
 
   }
 
