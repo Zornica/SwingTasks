@@ -8,7 +8,7 @@ import java.net.*;
 import java.util.Scanner;
 
 public class EchoClient {
-  static private final String SIGNOFF_TOKEN = "BYE";
+  static private final String SIGN_OFF_TOKEN = "BYE";
   private Socket echoSocket = null;
   private PrintWriter out = null;
   private Scanner socketScanner = null;
@@ -22,7 +22,7 @@ public class EchoClient {
   public EchoClient(String hostname, int port) {
     try {
       echoSocket = new Socket(hostname, port);
-      out = new PrintWriter(echoSocket.getOutputStream(), true);
+      out = new PrintWriter(echoSocket.getOutputStream());
       socketScanner = new Scanner(echoSocket.getInputStream());
     } catch (UnknownHostException e) {
       System.err.println("Don't know about host " + hostname);
@@ -59,7 +59,7 @@ public class EchoClient {
    */
   public boolean closeConnection() {
 
-    sendMessage(SIGNOFF_TOKEN);
+    sendMessage(SIGN_OFF_TOKEN);
 
     try {
       echoSocket.close();

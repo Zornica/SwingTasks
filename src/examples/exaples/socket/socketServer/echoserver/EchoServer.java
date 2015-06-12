@@ -39,7 +39,7 @@ public class EchoServer {
       clientSocket = serverSocket.accept();
       socketScanner = new Scanner(clientSocket.getInputStream());
       outputStream = clientSocket.getOutputStream();
-      outputToClient = new PrintWriter(outputStream, true);
+      outputToClient = new PrintWriter(outputStream);
       return true;
     } catch (IOException e) {
       // TODO Auto-generated catch block

@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-import org.testng.annotations.BeforeTest;
+
 import org.testng.annotations.Test;
 
 public class EchoServerTest {
@@ -17,13 +17,11 @@ public class EchoServerTest {
   private static final int TEST_PORT = 8192;
   EchoServer echoServer = null;
 
-  @BeforeTest
-  public void initialize() {
-    echoServer = new EchoServer();
-  }
+
 
   @Test
   public void testClientConnects() {
+    echoServer = new EchoServer();
     Socket testSocket = null;
     try {
       testSocket = new Socket(TEST_HOSTNAME, TEST_PORT);
@@ -44,6 +42,7 @@ public class EchoServerTest {
 
   @Test
   public void testClientDisconnect() {
+    echoServer = new EchoServer();
     Socket testSocket = null;
     try {
       testSocket = new Socket(TEST_HOSTNAME, TEST_PORT);
@@ -65,6 +64,7 @@ public class EchoServerTest {
 
   @Test
   public void testServerDisconnect() {
+    echoServer = new EchoServer();
     Socket testSocket = null;
     try {
       testSocket = new Socket(TEST_HOSTNAME, TEST_PORT);
@@ -86,13 +86,14 @@ public class EchoServerTest {
 
   @Test
   public void testClientMessage() {
+    echoServer = new EchoServer();
     Socket testSocket = null;
     String testMessage = "Test Message";
     try {
       testSocket = new Socket(TEST_HOSTNAME, TEST_PORT);
       echoServer.clientConnect();
       PrintWriter testWriter = new PrintWriter(
-              testSocket.getOutputStream(), true);
+              testSocket.getOutputStream());
       testWriter.println(testMessage);
       String resultString = echoServer.getMessage();
       assertEquals(testMessage, resultString);
@@ -110,13 +111,14 @@ public class EchoServerTest {
 
   @Test
   public void testClientMessageBye() {
+    echoServer = new EchoServer();
     Socket testSocket = null;
     String testMessage = "Bye";
     try {
       testSocket = new Socket(TEST_HOSTNAME, TEST_PORT);
       echoServer.clientConnect();
       PrintWriter testWriter = new PrintWriter(
-              testSocket.getOutputStream(), true);
+              testSocket.getOutputStream());
       testWriter.println(testMessage);
       echoServer.getMessage();
       Scanner testScanner = new Scanner(testSocket.getInputStream());
