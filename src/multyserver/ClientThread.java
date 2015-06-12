@@ -16,22 +16,21 @@ public class ClientThread extends Thread {
   public String s;
   public PrintWriter out;
 
-  public ClientThread(Socket socket,int br){
+  public ClientThread(Socket socket, int br) {
     this.socket = socket;
     this.br = br;
   }
 
-  public void run(){
-    try{
+  public void run() {
+    try {
       out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
       out.flush();
-      s="YOU ARE CLIENT " + br + " ! ";
-      /*out.println("Hello");*/
+      s = "YOU ARE CLIENT " + br + " ! ";
       out.println(s);
       out.close();
       this.interrupt();
       System.out.println(s);
-    }catch(IOException ioe){
+    } catch (IOException ioe) {
       System.out.println(ioe.getMessage());
     }
   }

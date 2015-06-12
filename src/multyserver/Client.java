@@ -13,20 +13,20 @@ public class Client {
   private BufferedReader in;
   private PanelClient panel;
 
-  public Client(PanelClient panel){
+  public Client(PanelClient panel) {
     this.panel = panel;
   }
 
   public void start() throws IOException {
-    Socket connection = new Socket("localhost", 1099);
+    Socket connection = new Socket("localhost", 4444);
     in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-    while (true){
+    while (true) {
       s = in.readLine();
 
-      if(s == null){
+      if (s == null) {
+        System.out.println("nckdjomcvkd");
         return;
-      }
-      else{
+      } else {
         System.out.println(s);
         panel.text.append(s + "\n");
       }

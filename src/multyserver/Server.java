@@ -7,19 +7,22 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Zornitsa Petkova on 6/8/15.
- */
+
 public class Server {
   private int br = 0;
   private Socket client;
   private ClientThread thread;
 
   public void start() throws IOException {
-    ServerSocket serverSocket = new ServerSocket(1099);
+    ServerSocket serverSocket = new ServerSocket(4444);
     System.out.println("Server started");
-   List <Socket> list = new ArrayList<Socket>();
+    List<Socket> list = new ArrayList<Socket>();
     while (true) {
+      if (list.size() >= 1) {
+        for (Socket l : list) {
+          thread.out.println("Client " + (list.size() + 1) + " started!");
+        }
+      }
       client = serverSocket.accept();
       br++;
       thread = new ClientThread(client, br);
