@@ -13,14 +13,12 @@ import static org.junit.Assert.assertThat;
 public class DownloadAgentTest {
   @Test
   public void downloadFile() throws Exception {
-    Downloader downloader = new Downloader();
-    downloader.panel.urlText.setText("http://zetcode.com/tutorials/javaswingtutorial/");
-    downloader.panel.fileText.setText("zuz.txt");
-    downloader.downloadAgent.downloadFile(downloader.panel.urlText.getText(), downloader.panel.fileText.getText());
-    downloader.downloadAgent.clear();
-    downloader.panel.urlText.setText("http://zetcode.com/tutorials/javaswingtutorial/");
-    downloader.panel.fileText.setText("text.txt");
-    downloader.downloadAgent.downloadFile(downloader.panel.urlText.getText(), downloader.panel.fileText.getText());
+    PanelURL panel = new PanelURL();
+    DownloadAgent downloadAgent = new DownloadAgent(panel);
+    downloadAgent.downloadFile("http://docs.oracle.com/javase/7/docs/api/java/util/Hashtable.html","text.txt");
+    downloadAgent.clear();
+    downloadAgent.downloadFile("http://docs.oracle.com/javase/7/docs/api/java/util/Hashtable.html","zuz.txt");
+    downloadAgent.clear();
     assertThat(new File("zuz.txt").length(), is(new File("text.txt").length()));
   }
 }
