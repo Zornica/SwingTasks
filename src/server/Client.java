@@ -29,7 +29,8 @@ public class Client {
       BufferedReader buffer = new BufferedReader(new InputStreamReader(client.getInputStream()));
       line = buffer.readLine();
       messageListener.newMessage(clientMessage.read());
-      messageListener.newMessage(clientMessage.print() + "\n" + line);
+      messageListener.newMessage(clientMessage.print());
+      messageListener.newMessage(line);
 
 
     } catch (IOException ioe) {

@@ -32,8 +32,6 @@ public class ClientTest {
     client = new Client(messageListener, clientMessage, 1033);
   }
 
-
-
   @Test
   public void isClientReceivedMessage() throws IOException {
 
@@ -82,7 +80,8 @@ public class ClientTest {
     StringBuilder list = new StringBuilder();
     list.append("The client is connecting. ");
     list.append("The client reads from server.");
-    list.append("The client prints the message from server."+"\n"+client.line);
+    list.append("The client prints the message from server.");
+    list.append(client.line);
     list.append("The client is closing.");
     client.stop();
     assertThat(messageListener.listMessages.toString(),is(list.toString()));
