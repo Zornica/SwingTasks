@@ -32,10 +32,7 @@ public class ClientTest {
     client = new Client(messageListener, clientMessage, 1033);
   }
 
-  @After
-  public void closeServer() {
-    server.stop();
-  }
+
 
   @Test
   public void isClientReceivedMessage() throws IOException {
