@@ -15,12 +15,12 @@ public class Server {
 
   public void start() throws IOException {
     ServerSocket serverSocket = new ServerSocket(4444);
-    System.out.println("Server started");
+    System.out.println("ServerFrame started");
     List<Socket> list = new ArrayList<Socket>();
     while (true) {
       if (list.size() >= 1) {
         for (Socket l : list) {
-          thread.out.println("Client " + (list.size() + 1) + " started!");
+          thread.out.println("ClientFrame " + (list.size() + 1) + " started!");
         }
       }
       client = serverSocket.accept();

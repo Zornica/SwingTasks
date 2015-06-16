@@ -1,47 +1,56 @@
 package server;
 
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Date;
 
 /**
- * Created by Zornitsa Petkova on 5/28/15.
+ * Created by Zornitsa Petkova on 6/16/15.
  */
-public class Server extends JFrame implements ActionListener {
-  PanelServer panel;
-  ServerStart server;
+public class Server {
 
+  private MessageListener messageListener;
+  private ServerMessage serverMessage;
+  private int port;
+  private ServerSocket server;
 
-  public Server() throws IOException {
-    setSize(200, 200);
-    setLocationRelativeTo(null);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setTitle("Server");
-    panel = new PanelServer();
-    server = new ServerStart();
-
-    add(panel);
-    setVisible(true);
-
-    server.start();
-
-    panel.button.addActionListener(this);
+  public Server(MessageListener messageListener, ServerMessage serverMessage, int port) {
+    this.messageListener = messageListener;
+    this.serverMessage = serverMessage;
+    this.port = port;
   }
 
-  public void actionPerformed(ActionEvent e) {
-try{
-server.connection.close();
-    System.exit(0);
-}catch (IOException ex){
-
-}
+  public void start() {
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          server = new ServerSocket(port);
+          while (true) {
+            Socket client = server.accept();
+            OutputStream output = client.getOutputStream();
+            output.write((serverMessage.getMessage() + " " + new Date()).getBytes());
+            output.flush();
+            client.close();
+          }
+        } catch (IOException ioe) {
+          ioe.getStackTrace();
+        }
+      }
+    }).start();
 
   }
 
-  public static void main(String[] args) throws IOException {
-    Server server = new Server();
+  public void stop() {
+    if (server != null) {
+      try {
+        server.close();
+      } catch (IOException ioe) {
+        ioe.getStackTrace();
+      }
+    }
   }
+
 }

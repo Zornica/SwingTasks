@@ -14,9 +14,9 @@ import static org.junit.Assert.assertThat;
 public class ClientTest {
   @Test
   public void isConnect() throws IOException {
-    Server server = new Server();
+    ServerFrame server = new ServerFrame();
 
-    Client client = new Client();
+    ClientFrame client = new ClientFrame();
 
     assertThat(client.panel.text.getText(), is("The client connects with server!\n\n" + "The client reads from server: \n" + "Hallo " + new Date() + "\n\nThe connection with server is closed!\n"));
   }

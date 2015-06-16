@@ -18,7 +18,7 @@ public class FrameServer extends JFrame {
     setSize(200, 200);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setTitle("Server");
+    setTitle("ServerFrame");
     panel = new PanelServer();
     server = new Server();
 

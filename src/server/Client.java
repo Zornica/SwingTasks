@@ -1,53 +1,49 @@
 package server;
 
-
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.IOException;
-
+import java.io.InputStreamReader;
+import java.net.Socket;
 
 /**
- * Created by Zornitsa Petkova on 5/28/15.
+ * Created by Zornitsa Petkova on 6/16/15.
  */
-public class Client extends JFrame implements ActionListener {
-  PanelClient panel;
-  ClientStart client;
+public class Client {
 
-  public Client() throws IOException {
-    setSize(300, 300);
-    setLocationRelativeTo(null);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setTitle("Client");
-    panel = new PanelClient();
-    client = new ClientStart();
-    add(panel);
-    setVisible(true);
+  private ClientMessage clientMessage;
+  private int port;
+  private MessageListener messageListener;
+  private StringBuilder builder;
 
-    panel.button.addActionListener(this);
-
+  public Client(MessageListener clientListener, ClientMessage clientMessage, int port) {
+    this.messageListener = clientListener;
+    this.clientMessage = clientMessage;
+    this.port = port;
   }
 
-  public void actionPerformed(ActionEvent e) {
-
+  public void connect() {
     try {
-      client.start();
+      Socket client = new Socket("localhost", port);
+      messageListener.newMessage(clientMessage.read());
+      BufferedReader buffer = new BufferedReader(new InputStreamReader(client.getInputStream()));
+      String line;
+      builder = new StringBuilder();
+      line = buffer.readLine();
+      messageListener.newMessage(clientMessage.read());
+      System.out.println(line);
+      builder.append(line);
+      messageListener.newMessage(clientMessage.print() + "\n" + builder.toString());
 
-      panel.text.append("The client connects with server!\n\n");
+      client.close();
+      messageListener.newMessage(clientMessage.closeClient());
 
-      panel.text.append("The client reads from server: \n" + client.s);
-
-
-      panel.text.append("\n\nThe connection with server is closed!\n");
-    } catch (IOException ex) {
-      panel.text.append(ex.getMessage() + "\n");
+    } catch (IOException ioe) {
+      ioe.getStackTrace();
     }
+  }
+
+  public void stop() {
 
   }
 
-
-  public static void main(String[] args) throws IOException {
-    Client client = new Client();
-  }
 }

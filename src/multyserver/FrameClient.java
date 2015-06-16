@@ -16,7 +16,7 @@ public class FrameClient extends JFrame implements ActionListener{
     setSize(500, 500);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setTitle("Client");
+    setTitle("ClientFrame");
     panel = new PanelClient();
     client = new Client(panel);
 
