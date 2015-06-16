@@ -22,7 +22,7 @@ public class PanelServer extends JPanel {
     gridBagConstraints.anchor = GridBagConstraints.CENTER;
     gridBagConstraints.fill = GridBagConstraints.BOTH;
 
-    button = new JButton("Stop ServerFrame");
+    button = new JButton("Stop Server");
     Font font = new Font("Helvetica", Font.PLAIN, 22);
     button.setFont(font);
     gridBagConstraints.gridwidth = 3;

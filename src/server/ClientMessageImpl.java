@@ -17,6 +17,6 @@ public class ClientMessageImpl implements ClientMessage {
   }
 
   public String closeClient() {
-    return "The client is closing.";
+    return " The client is closing.";
   }
 }

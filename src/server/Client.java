@@ -13,7 +13,8 @@ public class Client {
   private ClientMessage clientMessage;
   private int port;
   private MessageListener messageListener;
-  private StringBuilder builder;
+  public String line;
+  Socket client;
 
   public Client(MessageListener clientListener, ClientMessage clientMessage, int port) {
     this.messageListener = clientListener;
@@ -23,27 +24,22 @@ public class Client {
 
   public void connect() {
     try {
-      Socket client = new Socket("localhost", port);
-      messageListener.newMessage(clientMessage.read());
+       client = new Socket("localhost", port);
+      messageListener.newMessage(clientMessage.connect());
       BufferedReader buffer = new BufferedReader(new InputStreamReader(client.getInputStream()));
-      String line;
-      builder = new StringBuilder();
       line = buffer.readLine();
       messageListener.newMessage(clientMessage.read());
-      System.out.println(line);
-      builder.append(line);
-      messageListener.newMessage(clientMessage.print() + "\n" + builder.toString());
+      messageListener.newMessage(clientMessage.print() + "\n" + line);
 
-      client.close();
-      messageListener.newMessage(clientMessage.closeClient());
 
     } catch (IOException ioe) {
       ioe.getStackTrace();
     }
   }
 
-  public void stop() {
-
+  public void stop()throws IOException{
+    client.close();
+    messageListener.newMessage(clientMessage.closeClient());
   }
 
 }

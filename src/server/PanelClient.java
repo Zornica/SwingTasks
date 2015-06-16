@@ -32,6 +32,11 @@ public class PanelClient extends JPanel {
     gridBagConstraints.insets = new Insets(10, 10, 10, 10);
     this.add(text, gridBagConstraints);
 
-
+    button = new JButton("Stop Client");
+    button.setFont(font);
+    gridBagConstraints.gridwidth = 3;
+    gridBagConstraints.gridx = 1;
+    gridBagConstraints.gridy = 2;
+    this.add(button,gridBagConstraints);
   }
 }
