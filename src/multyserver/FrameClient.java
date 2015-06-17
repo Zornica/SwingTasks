@@ -7,18 +7,18 @@ import java.awt.event.ActionListener;
 /**
  * Created by Zornitsa Petkova on 6/9/15.
  */
-public class FrameClient extends JFrame implements ClientListener{
+public class FrameClient extends JFrame implements ClientListener {
   private PanelClient panel;
   private Client client;
 
-  public FrameClient(){
+  public FrameClient() {
     setSize(500, 500);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setTitle("ClientFrame");
     panel = new PanelClient();
     ClientMessageImpl message = new ClientMessageImpl();
-    client = new Client(message,this,1080);
+    client = new Client(message, this, 1080);
 
     add(panel);
     setVisible(true);
@@ -26,17 +26,16 @@ public class FrameClient extends JFrame implements ClientListener{
 
     panel.button.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e){
+      public void actionPerformed(ActionEvent e) {
         new Thread(new Runnable() {
           @Override
           public void run() {
-            try{
+            try {
               client.connect();
-            }catch(NoSocketException nos){
-              panel.text.append(nos.getMessage()+"\n");
+            } catch (NoSocketException nos) {
+              panel.text.append(nos.getMessage() + "\n");
             }
           }
-
         }).start();
       }
     });
@@ -44,8 +43,8 @@ public class FrameClient extends JFrame implements ClientListener{
   }
 
   @Override
-  public void newMessage(String message){
-    panel.text.setText(panel.text.getText()+message + "\n");
+  public void newMessage(String message) {
+    panel.text.setText(panel.text.getText() + message + "\n");
   }
 
 

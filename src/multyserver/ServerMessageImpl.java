@@ -6,7 +6,7 @@ package multyserver;
 public class ServerMessageImpl implements ServerMessage {
   @Override
   public String connectClient(int count) {
-    return "The client"+count+"is connecting!";
+    return "The client" + count + "is connecting!";
   }
 
 

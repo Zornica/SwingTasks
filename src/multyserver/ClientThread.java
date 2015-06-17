@@ -16,7 +16,7 @@ public class ClientThread extends Thread {
   private int count;
   private PrintWriter writer;
 
-  public ClientThread(List<Socket> list,Socket client,ServerMessage serverMessage,ClientMessage clientMessage,int count){
+  public ClientThread(List<Socket> list, Socket client, ServerMessage serverMessage, ClientMessage clientMessage, int count) {
     this.list = list;
     this.client = client;
     this.serverMessage = serverMessage;
@@ -24,25 +24,25 @@ public class ClientThread extends Thread {
     this.count = count;
   }
 
-  public void run(){
-    try{
+  public void run() {
+    try {
       writer = new PrintWriter(client.getOutputStream());
       writer.println(serverMessage.connectClient(count));
       new Thread(new Runnable() {
         @Override
         public void run() {
-          for(Socket clientList : list){
-            try{
+          for (Socket clientList : list) {
+            try {
               writer = new PrintWriter(clientList.getOutputStream());
               writer.println(clientMessage.sendToAll(count));
-            }catch (IOException ioe){
+            } catch (IOException ioe) {
               ioe.getStackTrace();
             }
           }
           list.add(client);
         }
       }).start();
-    }catch (IOException ioe){
+    } catch (IOException ioe) {
       ioe.getStackTrace();
     }
   }

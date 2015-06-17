@@ -5,5 +5,6 @@ package multyserver;
  */
 public interface ClientMessage {
   String connect();
+
   String sendToAll(int count);
 }

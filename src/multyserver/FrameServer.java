@@ -1,7 +1,6 @@
 package multyserver;
 
 
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by Zornitsa Petkova on 6/9/15.
  */
-public class FrameServer extends JFrame implements ServerListener{
+public class FrameServer extends JFrame implements ServerListener {
 
   PanelServer panel;
   Server server;
@@ -24,7 +23,7 @@ public class FrameServer extends JFrame implements ServerListener{
     panel = new PanelServer();
     ServerMessageImpl message = new ServerMessageImpl();
     ClientMessageImpl clientMessage = new ClientMessageImpl();
-    server = new Server(message,this,clientMessage,1080);
+    server = new Server(message, this, clientMessage, 1080);
 
     add(panel);
     setVisible(true);
@@ -46,14 +45,14 @@ public class FrameServer extends JFrame implements ServerListener{
     panel.buttonStop.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-          server.stop();
+        server.stop();
       }
     });
   }
 
   @Override
-  public void newClient(String message){
-    panel.text.setText(panel.text.getText()+message + "\n");
+  public void newClient(String message) {
+    panel.text.setText(panel.text.getText() + message + "\n");
   }
 
   public static void main(String[] args) throws IOException {

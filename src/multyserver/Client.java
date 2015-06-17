@@ -14,7 +14,7 @@ public class Client {
   private ClientListener clientListener;
   private int port;
   private StringBuilder builder = new StringBuilder();
-  private int count=0;
+  private int count = 0;
 
 
   public Client(ClientMessage clientMessage, ClientListener clientListener, int port) {
