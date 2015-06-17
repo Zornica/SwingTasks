@@ -3,12 +3,11 @@ package multyserver;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 /**
  * Created by Zornitsa Petkova on 6/9/15.
  */
-public class FrameClient extends JFrame implements ActionListener{
+public class FrameClient extends JFrame implements ClientListener{
   private PanelClient panel;
   private Client client;
 
@@ -18,23 +17,37 @@ public class FrameClient extends JFrame implements ActionListener{
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setTitle("ClientFrame");
     panel = new PanelClient();
-    client = new Client(panel);
+    ClientMessageImpl message = new ClientMessageImpl();
+    client = new Client(message,this,1080);
 
     add(panel);
     setVisible(true);
 
 
-    panel.button.addActionListener(this);
+    panel.button.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e){
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            try{
+              client.connect();
+            }catch(NoSocketException nos){
+              panel.text.append(nos.getMessage()+"\n");
+            }
+          }
+
+        }).start();
+      }
+    });
 
   }
 
-  public void actionPerformed(ActionEvent e){
-    try{
-      client.start();
-    }catch(IOException ioe){
-      panel.text.append(ioe.getMessage()+"\n");
-    }
+  @Override
+  public void newMessage(String message){
+    panel.text.setText(panel.text.getText()+message + "\n");
   }
+
 
   public static void main(String[] args) {
     FrameClient frame = new FrameClient();

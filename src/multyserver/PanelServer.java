@@ -13,6 +13,7 @@ public class PanelServer extends JPanel {
   private GridBagConstraints gridBagConstraints;
   public JButton buttonStart;
   public JButton buttonStop;
+  public JTextArea text;
 
   public PanelServer() {
     this.setLayout(new GridBagLayout());
@@ -27,18 +28,26 @@ public class PanelServer extends JPanel {
     gridBagConstraints.anchor = GridBagConstraints.CENTER;
     gridBagConstraints.fill = GridBagConstraints.BOTH;
 
+    text = new JTextArea();
+    Font font = new Font("Helvetica", Font.PLAIN, 14);
+    text.setFont(font);
+    gridBagConstraints.gridwidth = 3;
+    gridBagConstraints.gridx = 1;
+    gridBagConstraints.gridy = 1;
+    gridBagConstraints.insets = new Insets(10, 10, 10, 10);
+    this.add(text, gridBagConstraints);
 
-    Font font = new Font("Helvetica", Font.PLAIN, 22);
+
     buttonStart = new JButton("Start server");
     buttonStart.setFont(font);
-    paint(1, 1, 3);
+    paint(1, 2, 3);
     gridBagConstraints.insets = new Insets(10, 10, 10, 10);
     this.add(buttonStart, gridBagConstraints);
 
 
     buttonStop = new JButton("Stop server");
     buttonStop.setFont(font);
-    paint(1, 2, 3);
+    paint(1, 3, 3);
     gridBagConstraints.insets = new Insets(10, 10, 10, 10);
     this.add(buttonStop, gridBagConstraints);
   }

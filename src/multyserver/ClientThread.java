@@ -1,37 +1,49 @@
 package multyserver;
 
-
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
-
+import java.util.List;
 
 /**
- * Created by Zornitsa Petkova on 6/8/15.
+ * Created by Zornitsa Petkova on 6/17/15.
  */
 public class ClientThread extends Thread {
-  private Socket socket;
-  private int br;
-  public String s;
-  public PrintWriter out;
+  private List<Socket> list;
+  private Socket client;
+  private ServerMessage serverMessage;
+  private ClientMessage clientMessage;
+  private int count;
+  private PrintWriter writer;
 
-  public ClientThread(Socket socket, int br) {
-    this.socket = socket;
-    this.br = br;
+  public ClientThread(List<Socket> list,Socket client,ServerMessage serverMessage,ClientMessage clientMessage,int count){
+    this.list = list;
+    this.client = client;
+    this.serverMessage = serverMessage;
+    this.clientMessage = clientMessage;
+    this.count = count;
   }
 
-  public void run() {
-    try {
-      out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-      out.flush();
-      s = "YOU ARE CLIENT " + br + " ! ";
-      out.println(s);
-      out.close();
-      this.interrupt();
-      System.out.println(s);
-    } catch (IOException ioe) {
-      System.out.println(ioe.getMessage());
+  public void run(){
+    try{
+      writer = new PrintWriter(client.getOutputStream());
+      writer.println(serverMessage.connectClient(count));
+      new Thread(new Runnable() {
+        @Override
+        public void run() {
+          for(Socket clientList : list){
+            try{
+              writer = new PrintWriter(clientList.getOutputStream());
+              writer.println(clientMessage.sendToAll(count));
+            }catch (IOException ioe){
+              ioe.getStackTrace();
+            }
+          }
+          list.add(client);
+        }
+      }).start();
+    }catch (IOException ioe){
+      ioe.getStackTrace();
     }
   }
 }
