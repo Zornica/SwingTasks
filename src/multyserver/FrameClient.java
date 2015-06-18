@@ -43,7 +43,7 @@ public class FrameClient extends JFrame implements MessageListener {
 
   @Override
   public void newMessage(String message) {
-    panel.text.setText(panel.text.getText() + message + "\n");
+    panel.text.append(message + "\n");
   }
 
 

@@ -1,6 +1,7 @@
 package multyserver;
 
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -18,7 +19,7 @@ public class Server {
   private ServerSocket server;
   private ArrayList<Socket> list = new ArrayList<Socket>();
   private PrintWriter out;
-  //private ClientMessage clientMessage;
+
 
   public Server(ServerMessage serverMessage, MessageListener messageListener, int port) {
     this.serverMessage = serverMessage;
@@ -32,7 +33,7 @@ public class Server {
     server = new ServerSocket(port);
       while(true){
         client = server.accept();
-        out=new PrintWriter(client.getOutputStream());
+        out=new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
         out.write("amamamamama");
         out.write(serverMessage.connect(count));
         sendToAll(list, count);

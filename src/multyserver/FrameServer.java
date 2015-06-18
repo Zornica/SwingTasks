@@ -22,7 +22,7 @@ public class FrameServer extends JFrame implements MessageListener {
     setTitle("ServerFrame");
     panel = new PanelServer();
     ServerMessageImpl message = new ServerMessageImpl();
-  //  ClientMessageImpl clientMessage = new ClientMessageImpl();
+
     server = new Server(message, this, 1430);
 
     add(panel);
@@ -52,7 +52,7 @@ public class FrameServer extends JFrame implements MessageListener {
 
   @Override
   public void newMessage(String message) {
-    panel.text.setText(panel.text.getText() + message + "\n");
+    panel.text.append(message + "\n");
   }
 
   public static void main(String[] args) throws IOException {
