@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Zornitsa Petkova on 6/9/15.
  */
-public class FrameClient extends JFrame implements ClientListener {
+public class FrameClient extends JFrame implements MessageListener {
   private PanelClient panel;
   private Client client;
 
@@ -17,8 +17,7 @@ public class FrameClient extends JFrame implements ClientListener {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setTitle("ClientFrame");
     panel = new PanelClient();
-    ClientMessageImpl message = new ClientMessageImpl();
-    client = new Client(message, this, 1080);
+    client = new Client(this,1430);
 
     add(panel);
     setVisible(true);

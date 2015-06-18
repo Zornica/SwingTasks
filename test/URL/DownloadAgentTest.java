@@ -15,10 +15,8 @@ public class DownloadAgentTest {
   public void downloadFile() throws Exception {
     PanelURL panel = new PanelURL();
     DownloadAgent downloadAgent = new DownloadAgent(panel);
-    downloadAgent.downloadFile("http://docs.oracle.com/javase/7/docs/api/java/util/Hashtable.html","text.txt");
+    downloadAgent.downloadFile("http://freedownloads.last.fm/download/492220550/Takyon%2B%2528Death%2BYon%2529.mp3","text.txt");
     downloadAgent.clear();
-    downloadAgent.downloadFile("http://docs.oracle.com/javase/7/docs/api/java/util/Hashtable.html","zuz.txt");
-    downloadAgent.clear();
-    assertThat(new File("zuz.txt").length(), is(new File("text.txt").length()));
+    assertThat((new File("text.txt").length()),is((long)2694970));
   }
 }

@@ -9,5 +9,15 @@ public class ServerMessageImpl implements ServerMessage {
     return "The client" + count + "is connecting!";
   }
 
+  @Override
+  public String sendToAll(int count) {
+    return "The Client " + count + "was connected!";
+  }
+
+  @Override
+  public String connect(int count) {
+
+    return "You are client!";
+  }
 
 }

@@ -1,9 +1,11 @@
 package multyserver;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Zornitsa Petkova on 6/17/15.
@@ -11,36 +13,35 @@ import java.util.ArrayList;
 public class Server {
   public int count = 1;
   private ServerMessage serverMessage;
-  private ServerListener serverListener;
+  private MessageListener messageListener;
   private int port;
   private ServerSocket server;
-  private ClientMessage clientMessage;
   private ArrayList<Socket> list = new ArrayList<Socket>();
+  private PrintWriter out;
+  //private ClientMessage clientMessage;
 
-  public Server(ServerMessage serverMessage, ServerListener serverListener, ClientMessage clientMessage, int port) {
+  public Server(ServerMessage serverMessage, MessageListener messageListener, int port) {
     this.serverMessage = serverMessage;
-    this.serverListener = serverListener;
-    this.clientMessage = clientMessage;
+    this.messageListener = messageListener;
     this.port = port;
   }
 
   public void start() {
     Socket client = null;
-    try {
-      server = new ServerSocket(port);
-      while (true) {
+    try{
+    server = new ServerSocket(port);
+      while(true){
         client = server.accept();
+        out=new PrintWriter(client.getOutputStream());
+        out.write("amamamamama");
+        out.write(serverMessage.connect(count));
+        sendToAll(list, count);
         list.add(client);
-        serverListener.newClient(serverMessage.connectClient(count));
-        new ClientThread(list, client, serverMessage, clientMessage, count).start();
-
-        Thread.sleep(200);
+        messageListener.newMessage(serverMessage.connectClient(count));
         count++;
       }
     } catch (IOException ioe) {
       ioe.getStackTrace();
-    } catch (InterruptedException in) {
-      in.getStackTrace();
     } finally {
       if (client != null) {
         try {
@@ -52,6 +53,11 @@ public class Server {
     }
   }
 
+  public void sendToAll(List<Socket> list,int count){
+    for(Socket l:list){
+      out.write(serverMessage.sendToAll(count));
+    }
+  }
   public void stop() {
     try {
       if (server != null) {

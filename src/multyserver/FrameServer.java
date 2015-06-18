@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by Zornitsa Petkova on 6/9/15.
  */
-public class FrameServer extends JFrame implements ServerListener {
+public class FrameServer extends JFrame implements MessageListener {
 
   PanelServer panel;
   Server server;
@@ -22,8 +22,8 @@ public class FrameServer extends JFrame implements ServerListener {
     setTitle("ServerFrame");
     panel = new PanelServer();
     ServerMessageImpl message = new ServerMessageImpl();
-    ClientMessageImpl clientMessage = new ClientMessageImpl();
-    server = new Server(message, this, clientMessage, 1080);
+  //  ClientMessageImpl clientMessage = new ClientMessageImpl();
+    server = new Server(message, this, 1430);
 
     add(panel);
     setVisible(true);
@@ -51,7 +51,7 @@ public class FrameServer extends JFrame implements ServerListener {
   }
 
   @Override
-  public void newClient(String message) {
+  public void newMessage(String message) {
     panel.text.setText(panel.text.getText() + message + "\n");
   }
 

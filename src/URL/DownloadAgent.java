@@ -19,8 +19,6 @@ public class DownloadAgent {
   }
 
   public void downloadFile(final String url, final String outputFile) throws Exception {
-    Runnable updateThread = new Runnable() {
-      public void run() {
         try {
 
           URL url1 = new URL(url);
@@ -49,10 +47,7 @@ public class DownloadAgent {
 
         }
       }
-    };
-    new Thread(updateThread).start();
 
-  }
 
   public void clear() {
     panel.urlText.setText("");

@@ -27,17 +27,26 @@ public class Downloader extends JFrame implements ActionListener {
     panel.clear.addActionListener(this);
   }
 
-  public void actionPerformed(ActionEvent e) {
-    if (((JButton) e.getSource()).getText().equals("Download")) {
-      try {
-        downloadAgent.downloadFile(panel.urlText.getText(), panel.fileText.getText());
+  public void actionPerformed(final ActionEvent e) {
 
-      } catch (Exception ex) {
-        System.out.println(ex.getMessage());
-      }
-    } else {
-      downloadAgent.clear();
-    }
+
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            if (((JButton) e.getSource()).getText().equals("Download")) {
+              try {
+                downloadAgent.downloadFile(panel.urlText.getText(), panel.fileText.getText());
+
+              } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+              }
+            } else {
+              downloadAgent.clear();
+            }
+
+          }
+        }).start();
+
   }
 
 }
