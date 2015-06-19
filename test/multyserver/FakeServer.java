@@ -13,6 +13,7 @@ public class FakeServer {
   private String message;
   private int port;
   private ServerSocket server = null;
+  public int count =1;
 
   public FakeServer(String message,int port){
     this.message = message;
@@ -26,7 +27,8 @@ public class FakeServer {
       while(true){
         client=server.accept();
         PrintWriter out = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
-        out.println(message);
+        out.println(message + count);
+        count ++;
       }
     }catch (IOException ioe){
       ioe.getStackTrace();

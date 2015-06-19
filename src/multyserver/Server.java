@@ -34,8 +34,8 @@ public class Server {
       while(true){
         client = server.accept();
         out=new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
-        out.write("amamamamama");
-        out.write(serverMessage.connect(count));
+        out.println("amamamamama");
+        out.println(serverMessage.connect(count));
         sendToAll(list, count);
         list.add(client);
         messageListener.newMessage(serverMessage.connectClient(count));

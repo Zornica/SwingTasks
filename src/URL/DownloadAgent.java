@@ -4,6 +4,7 @@ package URL;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 
 
 /**
@@ -13,6 +14,7 @@ public class DownloadAgent {
 
 
   PanelURL panel;
+  int [] list  = new int[1000];
 
   public DownloadAgent(PanelURL panel) {
     this.panel = panel;
@@ -37,6 +39,9 @@ public class DownloadAgent {
             bout.write(data);
             float Percent = (downloadedFileSize * 100) / completeFileSize;
             System.out.println(Percent);
+            for(int p : list){
+            list[p]=(int)Percent;
+            }
             panel.progressBar.setValue((int) Percent);
           }
           in.close();
