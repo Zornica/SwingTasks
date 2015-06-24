@@ -35,10 +35,10 @@ public class Server {
         client = server.accept();
         out=new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
         out.println("amamamamama");
-        out.println(serverMessage.connect(count));
+        out.println(serverMessage.connect("You are the client "+count + "!"));
         sendToAll(list, count);
         list.add(client);
-        messageListener.newMessage(serverMessage.connectClient(count));
+        messageListener.newMessage(serverMessage.connectClient("The client "+count+" started!"));
         count++;
       }
     } catch (IOException ioe) {
@@ -55,8 +55,12 @@ public class Server {
   }
 
   public void sendToAll(List<Socket> list,int count){
+    try{
     for(Socket l:list){
-      out.write(serverMessage.sendToAll(count));
+      new PrintWriter(new OutputStreamWriter(l.getOutputStream())).println(serverMessage.sendToAll("The clint "+count+" connected!"));
+    }
+    }catch (IOException io){
+      io.getStackTrace();
     }
   }
   public void stop() {

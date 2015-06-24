@@ -8,10 +8,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.io.IOException;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by Zornitsa Petkova on 6/18/15.
@@ -38,7 +37,7 @@ public class ClientTest {
   public void readMessage(){
 
     mockery.checking(new Expectations(){{
-      oneOf(message).connectClient(server.count);
+      oneOf(message).connectClient(server.message+server.count);
     }
     });
 

@@ -5,19 +5,19 @@ package multyserver;
  */
 public class ServerMessageImpl implements ServerMessage {
   @Override
-  public String connectClient(int count) {
-    return "The client" + count + "is connecting!";
+  public String connectClient(String message) {
+    return message;
   }
 
   @Override
-  public String sendToAll(int count) {
-    return "The Client " + count + "was connected!";
+  public String sendToAll(String message) {
+    return message;
   }
 
   @Override
-  public String connect(int count) {
+  public String connect(String message) {
 
-    return "You are client!";
+    return message;
   }
 
 }

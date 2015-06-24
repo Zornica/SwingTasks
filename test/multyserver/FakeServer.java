@@ -10,7 +10,7 @@ import java.net.Socket;
  * Created by Zornitsa Petkova on 6/18/15.
  */
 public class FakeServer {
-  private String message;
+  public String message;
   private int port;
   private ServerSocket server = null;
   public int count =1;
