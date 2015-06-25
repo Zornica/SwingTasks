@@ -5,6 +5,8 @@ package multyserver;
  */
 public interface ServerMessage {
   String connectClient(String message);
+
   String sendToAll(String message);
+
   String connect(String message);
 }

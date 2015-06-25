@@ -24,7 +24,7 @@ public class Client {
 
   public void connect() {
     try {
-       client = new Socket("localhost", port);
+      client = new Socket("localhost", port);
       messageListener.newMessage(clientMessage.connect());
       BufferedReader buffer = new BufferedReader(new InputStreamReader(client.getInputStream()));
       line = buffer.readLine();
@@ -38,7 +38,7 @@ public class Client {
     }
   }
 
-  public void stop()throws IOException{
+  public void stop() throws IOException {
     client.close();
     messageListener.newMessage(clientMessage.closeClient());
   }

@@ -17,7 +17,7 @@ public class FrameClient extends JFrame implements MessageListener {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setTitle("ClientFrame");
     panel = new PanelClient();
-    client = new Client(this,1430);
+    client = new Client(this, 1430);
 
     add(panel);
     setVisible(true);

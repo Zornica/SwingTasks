@@ -28,6 +28,6 @@ public class PanelServer extends JPanel {
     gridBagConstraints.gridwidth = 3;
     gridBagConstraints.gridx = 1;
     gridBagConstraints.gridy = 1;
-    this.add(button,gridBagConstraints);
+    this.add(button, gridBagConstraints);
   }
 }

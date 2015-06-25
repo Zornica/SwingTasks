@@ -25,16 +25,16 @@ public class ClientFrame extends JFrame implements MessageListener {
     add(panel);
     setVisible(true);
     client.connect();
-   panel.button.addActionListener(new ActionListener() {
-     @Override
-     public void actionPerformed(ActionEvent e) {
-       try{
-       client.stop();
-       }catch (IOException ioe){
-         ioe.getStackTrace();
-       }
-     }
-   });
+    panel.button.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        try {
+          client.stop();
+        } catch (IOException ioe) {
+          ioe.getStackTrace();
+        }
+      }
+    });
 
   }
 

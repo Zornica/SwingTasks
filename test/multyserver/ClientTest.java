@@ -60,7 +60,7 @@ public class ClientTest {
     }).start();
 
     String message = client.getMessage();
-    assertThat(message,is("You are client number: 1"));
+    assertThat(message,is("You are client number:1"));
   }
 
   @Test

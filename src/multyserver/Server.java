@@ -29,16 +29,16 @@ public class Server {
 
   public void start() {
     Socket client = null;
-    try{
-    server = new ServerSocket(port);
-      while(true){
+    try {
+      server = new ServerSocket(port);
+      while (true) {
         client = server.accept();
-        out=new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
+        out = new PrintWriter(new OutputStreamWriter(client.getOutputStream()),true);
         out.println("amamamamama");
-        out.println(serverMessage.connect("You are the client "+count + "!"));
+        out.println(serverMessage.connect("You are the client " + count + "!"));
         sendToAll(list, count);
         list.add(client);
-        messageListener.newMessage(serverMessage.connectClient("The client "+count+" started!"));
+        messageListener.newMessage(serverMessage.connectClient("The client " + count + " started!"));
         count++;
       }
     } catch (IOException ioe) {
@@ -54,15 +54,16 @@ public class Server {
     }
   }
 
-  public void sendToAll(List<Socket> list,int count){
-    try{
-    for(Socket l:list){
-      new PrintWriter(new OutputStreamWriter(l.getOutputStream())).println(serverMessage.sendToAll("The clint "+count+" connected!"));
-    }
-    }catch (IOException io){
+  public void sendToAll(List<Socket> list, int count) {
+    try {
+      for (Socket l : list) {
+        new PrintWriter(new OutputStreamWriter(l.getOutputStream()),true).println(serverMessage.sendToAll("The clint " + count + " connected!"));
+      }
+    } catch (IOException io) {
       io.getStackTrace();
     }
   }
+
   public void stop() {
     try {
       if (server != null) {

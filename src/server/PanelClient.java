@@ -37,6 +37,6 @@ public class PanelClient extends JPanel {
     gridBagConstraints.gridwidth = 3;
     gridBagConstraints.gridx = 1;
     gridBagConstraints.gridy = 2;
-    this.add(button,gridBagConstraints);
+    this.add(button, gridBagConstraints);
   }
 }

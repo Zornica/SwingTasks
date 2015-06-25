@@ -14,8 +14,10 @@ public class FakeServer {
   private int port;
   private ServerSocket server = null;
   public int count =1;
+  private MessageListener messageListener;
 
-  public FakeServer(String message,int port){
+  public FakeServer(MessageListener messageListener,String message,int port){
+    this.messageListener=messageListener;
     this.message = message;
     this.port=port;
   }
@@ -26,8 +28,8 @@ public class FakeServer {
       server = new ServerSocket(port);
       while(true){
         client=server.accept();
-        PrintWriter out = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
-        out.println(message + count);
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(client.getOutputStream()),true);
+        out.println(messageListener.newMessage(message + count));
         count ++;
       }
     }catch (IOException ioe){
